@@ -14,6 +14,11 @@ router.get('/ping', ctx => {
   ctx.response.body = utilRepo.read('test.txt');
 });
 
+router.get('/allrooms', allRoomRepo.getAllRoom);
+router.post('/allrooms', allRoomRepo.createRoom);
+router.put('/allrooms', allRoomRepo.updateRoom);
+router.del('/allrooms', allRoomRepo.deleteRoom);
+
 app.use(koaBodyParser());
 app.use(router.routes());
 app.listen(port);

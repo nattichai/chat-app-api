@@ -2,7 +2,12 @@ const fs = require('fs');
 
 const util = {
   read: (fileName) => {
-    return JSON.parse(fs.readFileSync(fileName, (err => err && console.log(err))));
+    try {
+      return JSON.parse(fs.readFileSync(fileName, (err => err && console.log(err))));
+    } catch (err) {
+      fs.writeFileSync(fileName, [], err => err && console.log(err));
+      return [];
+    }
   },
 
   write: (fileName, obj) => {

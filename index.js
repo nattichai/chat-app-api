@@ -1,3 +1,4 @@
+const utilRepo = require('./my-util');
 const koa = require('koa');
 const koaRouter = require('koa-router');
 
@@ -6,7 +7,8 @@ const router = new koaRouter();
 const port = 3000;
 
 router.get('/ping', (ctx, next) => {
-  ctx.response.body = "pong";
+  utilRepo.write('test.txt', 'pong');
+  ctx.response.body = utilRepo.read('test.txt');
 });
  
 app.use(router.routes())

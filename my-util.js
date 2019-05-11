@@ -5,7 +5,7 @@ const util = {
     try {
       return JSON.parse(fs.readFileSync(fileName, (err => err && console.log(err))));
     } catch (err) {
-      fs.writeFileSync(fileName, [], err => err && console.log(err));
+      fs.writeFileSync(fileName, JSON.stringify([]), err => err && console.log(err));
       return [];
     }
   },

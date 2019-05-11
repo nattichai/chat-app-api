@@ -10,7 +10,7 @@ const roomRepo = {
       ctx.response.body = users.filter(user => user.room_id === roomId).map(user => user.user);
     } else {
       ctx.response.status = 404;
-      ctx.response.body = 'Room does not exist';
+      ctx.response.body = '"Room does not exist"';
     }
   },
   userJoinRoom: ctx => {
@@ -51,10 +51,10 @@ const roomRepo = {
       const newUsers = users.filter(user => user.room_id !== roomId || user.user !== userName);
       utilRepo.write('user.txt', newUsers);
       ctx.response.status = 200;
-      ctx.response.body = userName + " leaves the room";
+      ctx.response.body = '"' + userName + " leaves the room" + '"';
     } else {
       ctx.response.status = 404;
-      ctx.response.body = "User id is not found";
+      ctx.response.body = '"User id is not found"';
     }
   }
 }

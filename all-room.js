@@ -17,7 +17,7 @@ const allRoomRepo = {
     const roomInfo = utilRepo.read(roomPath);
 
     if (roomInfo.includes(roomId)) {
-      ctx.response.body = `${roomId} already exists`;
+      ctx.response.body = '"' + roomId + 'already exists"';
       ctx.response.status = 404;
     } else {
       roomInfo.push(roomId);
@@ -58,10 +58,10 @@ const allRoomRepo = {
       utilRepo.write(roomPath, roomInfo);
       utilRepo.write(userPath, newUserInfo);
 
-      ctx.response.body = `${roomId} is deleted`;
-      ctx.response.status = 201;
+      ctx.response.body = '"' + roomId + 'is deleted"';
+      ctx.response.status = 200;
     } else {
-      ctx.response.body = 'Room id is not found';
+      ctx.response.body = '"Room id is not found"';
       ctx.response.status = 404;
     }
   },
